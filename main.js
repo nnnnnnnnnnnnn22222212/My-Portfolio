@@ -1,6 +1,6 @@
 import AdminProjectEditPage from "@/pages/admin/projects-edit";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
 
 import { render, router } from "./src/lib";
 import AboutPage from "./src/pages/about";
