@@ -8,7 +8,7 @@ const HomePage = () => {
             <div class="left-header">
                 <div class="h-shape"></div>
                 <div class="image">
-                    <img src="img/me.jpg" alt="">
+                    <img src="me.jpg" alt="">
                 </div>
             </div>
             <div class="right-header">
@@ -20,14 +20,20 @@ const HomePage = () => {
                     Tôi là một Nhà phát triển web, tôi thích tạo các trang web đẹp.
                 </p>
                 <div class="btn-con">
-                    <a href="" class="main-btn">
+                <a href="http://localhost:5173/#/123" class="main-btn">
                         <span class="btn-text">Download CV</span>
-                        <span class="btn-icon"><i class="fas fa-download"></i></span>
-                    </a>
+                         <span class="btn-icon"><i class="fas fa-download"></i></span>
+                </a>
                 </div>
+                
+                
+                
+               
+                
             </div>
         </div>
     </header>`;
+    
 };
 
 export default HomePage;

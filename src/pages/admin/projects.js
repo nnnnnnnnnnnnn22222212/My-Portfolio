@@ -1,7 +1,9 @@
 import { useEffect, useState } from "@/lib";
+import Header from "../../components/Header";
 
 const AdminProjectsPage = () => {
-    // projects  = 3
+
+ 
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -15,9 +17,8 @@ const AdminProjectsPage = () => {
         for (let btn of btns) {
             btn.addEventListener("click", function () {
                 const id = this.dataset.id;
-                // xóa trên server
+                
                 fetch(`http://localhost:3000/projects/${id}`, { method: "DELETE" }).then(() => {
-                    // xóa ở client : reRender
                     const newsProject = projects.filter((project) => project.id != id);
                     setProjects(newsProject);
                 });
@@ -25,50 +26,52 @@ const AdminProjectsPage = () => {
         }
     });
 
-    return `<div class="container mt-5">
-                <h1>Quản lý dự án</h1>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>STT</th>
-                            <th>Tên dự án</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${projects
-                            .map((project, index) => {
-                                return `
-                                <tr>
-                                    <td>${index + 1}</td>
-                                    <td>${project.name}</td>
-                                    <td width="150">
-                                        <button data-id="${
-                                            project.id
-                                        }" class="btn btn-danger btn-remove">Xóa</button>
-                                    </td>
-                                </tr>
-                            `;
-                            })
-                            .join("")}
-                    </tbody>
-                </table>
+    return `
+    ${Header()}
+     <section class="container" id="portfolio">
+    <div class="main-title">
+        <h2>My <span>Projects</span><span class="bg-text">My Work</span></h2>
+    </div>
+    <p class="port-text">
+        Đây là một vài dự án của tôi làm được của bản thân tôi.
+    </p>
+    <div class="portfolios">
+        ${projects
+            .map((project,index) => {
+                return `
+                <div class="portfolio-item" data-id="${index+1}">
+                <div class="image">
+                    <img src="${project.img}" alt="">
+                </div>
+                <div class="hover-items">
+                    <h3>Project Source</h3>
+                    <div class="icons">
+                        <a href="${project.link}" class="icon">
+                            <i  class="fab fa-github"></i>
+                        </a>
+                        
+                    </div>
+                    <div class="icons">
+                        <a class="icon">
+                        <button data-id="${project.id}" class="btn btn-remove">Xóa</button>
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+                `
+            }  ).join("")
 
-    </div>`;
+            
+
+        }
+        
+
+        
+    </div>
+</section>`;
 };
 
 export default AdminProjectsPage;
 
-// Bước 1: npm i -g json-server
-// Bước 2: truy cập folder root
-// json-server --watch db.json
 
-//disabled system
-// angular.io/guide/setup-local
-// copy : Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
-
-// GET /projects -> list
-// GET /projects/:id -> single
-// POST /projects -> add
-// PUT /projects/:id + body -> update
-// DELETE /projects/:id -> delete
