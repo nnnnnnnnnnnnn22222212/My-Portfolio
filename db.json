@@ -1,16 +1,55 @@
 {
-  "projects": [],
-  "blogs": [
+  "projects": [
     {
-      "id": 0,
-      "img": "",
-      "tieude": "",
-      "chitiet": ""
+      "name": "happynewyear",
+      "img": [
+        "https://res.cloudinary.com/dtmgrjrhi/image/upload/v1676949315/ECMA/hluhrwws7zc5qc3zvtqr.png"
+      ],
+      "link": "https://github.com/nnnnnnnnnnnnn22222212/happy_new_year",
+      "id": 1
     },
     {
-      "img": "ảnh1",
-      "tieude": "my t",
-      "chitiet": "dsadas",
+      "name": "Thiệp giáng Sinh",
+      "img": [
+        "https://res.cloudinary.com/dtmgrjrhi/image/upload/v1676950225/ECMA/fptgfiauptpbykcz4xck.png"
+      ],
+      "link": "https://github.com/nnnnnnnnnnnnn22222212/noel",
+      "id": 2
+    }
+  ],
+  "blogs": [
+    {
+      "img": [
+        "https://res.cloudinary.com/dtmgrjrhi/image/upload/v1676949900/ECMA/rrf4zdlnrkzpziwweajw.jpg"
+      ],
+      "tieude": "  Làm sao để có nhiều kiến thức về code.",
+      "chitiet": " Nhiều người bắt đầu tiếp xúc với lập trình bằng cách đọc thật nhiều sách. Chọn phương pháp này cũng ổn thôi – đó cũng là cách mà tôi học code khi lần đầu tiên bước vào lĩnh vực này. Tuy nhiên, nếu thật sự muốn khởi đầu đúng hướng thì hãy đọc ít thôi và dành thời gian cho các bài luyện tập thực sự, từ đơn giản đến phức tạp.",
+      "id": 1
+    },
+    {
+      "img": [
+        "https://res.cloudinary.com/dtmgrjrhi/image/upload/v1676949968/ECMA/keixjxw21xmm8qgvzssd.jpg"
+      ],
+      "tieude": "Tập trung học tập và làm dự án bằng cách điều chỉnh thời gian hợp lý",
+      "chitiet": "Lập thời gian biểu rõ ràng.Sắp xếp việc học và làm việc hàng ngày dựa trên mức độ quan trọng của mỗi thứ <br>                                +Tìm ra khung giờ của bản thân",
+      "id": 2
+    }
+  ],
+  "home": [
+    {
+      "img": [
+        "https://res.cloudinary.com/dtmgrjrhi/image/upload/v1677080983/ECMA/ta9l7pjeqbww3mvbms5h.jpg"
+      ],
+      "tiltle": "Nguyễn Lê Trường Sơn",
+      "details": "Tôi là một Nhà phát triển web, tôi thích tạo các trang web đẹp.",
+      "id": 3
+    }
+  ],
+  "about": [
+    {
+      "tiltle": "Thông tin của tôi",
+      "thongtin": "Hiện tại tôi là sinh viên kì 3 trường Cao Đẳng FPT Polytechnic.Mình bắt đầu học lập trình từ                         năm ngoái và mình rất thích code. Ngoài việc học ở trường mình còn học thêm ở các trang mạng nhu                         F8 và các kênh code ở nền tảng youtube.",
+      "soluong": "2",
       "id": 1
     }
   ]

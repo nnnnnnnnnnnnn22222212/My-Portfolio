@@ -1,30 +1,16 @@
 import { useEffect, useState } from "@/lib";
 import Header from "../../components/Header";
-
+import axios from 'axios';
+import { getPRD  } from "@/api/prduc";
+import { deletePRD  } from "@/api/prduc";
 const AdminProjectsPage = () => {
 
  
     const [projects, setProjects] = useState([]);
-
     useEffect(() => {
-        fetch("http://localhost:3000/projects")
-            .then((response) => response.json())
-            .then((data) => setProjects(data))
-            .catch((error) => console.log(error));
+        getPRD().then((response) => {setProjects(response.data)});
     }, []);
-    useEffect(() => {
-        const btns = document.querySelectorAll(".btn-remove");
-        for (let btn of btns) {
-            btn.addEventListener("click", function () {
-                const id = this.dataset.id;
-                
-                fetch(`http://localhost:3000/projects/${id}`, { method: "DELETE" }).then(() => {
-                    const newsProject = projects.filter((project) => project.id != id);
-                    setProjects(newsProject);
-                });
-            });
-        }
-    });
+   
 
     return `
     ${Header()}
@@ -44,19 +30,14 @@ const AdminProjectsPage = () => {
                     <img src="${project.img}" alt="">
                 </div>
                 <div class="hover-items">
-                    <h3>Project Source</h3>
+                    <h3>${project.name}</h3>
                     <div class="icons">
                         <a href="${project.link}" class="icon">
                             <i  class="fab fa-github"></i>
                         </a>
                         
                     </div>
-                    <div class="icons">
-                        <a class="icon">
-                        <button data-id="${project.id}" class="btn btn-remove">Xóa</button>
-                        </a>
-                        
-                    </div>
+                   
                 </div>
             </div>
                 `

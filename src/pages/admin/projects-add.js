@@ -1,5 +1,7 @@
 import { useEffect, router } from "@/lib";
 import axios from 'axios';
+import { addPRD  } from "@/api/prduc";
+import { fromJSON } from "postcss";
 const AdminProjectAddPage = () => {
     useEffect(() => {
         const form = document.querySelector("#form-add");
@@ -7,44 +9,43 @@ const AdminProjectAddPage = () => {
         const projectAuthor = document.querySelector("#img");
         const projectlink = document.querySelector("#link");
 
-        form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", async function (e) {
             e.preventDefault(); 
-         
-          
-            const formData = {
+            const urls= await uppAnh(projectAuthor.files);
+
+            const formDAta = {
                 name: projectName.value,
-                img: projectAuthor.value,
+                img: urls,
                 link: projectlink.value
             };
-          
-            fetch("http://localhost:3000/projects", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(formData),
-            })
-                .then(() => router.navigate("/portfolio"))
-                .catch((error) => console.log(error));
+            addPRD(formDAta).then(() => router.navigate("/admin/projects"));
+    
         });
     });
-    const uppAnh = (files) =>{
-        const nameClou = "dgsjhfk9l";
-        const pre_name = "uppload";
-        const Foder_Name = "ECMA";
+
+    const uppAnh = async (files) => {
+        const CLOUD_NAME = "dtmgrjrhi";
+        const PRESET_NAME = "test-upp";
+        const FODER_NAME = "ECMA";
         const url = [];
-        const api = `https://api.cloudinary.com/v1_1/${nameClou}/image/upload`;
-        const fData = new formData();
-        fData.append("uppload_preset", pre_name);
-        fData.append("folder", Foder_Name);
-        for(const file of files){
-            fData.append("file",file);
-            axios.post(api, fData, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            }).then(response => console.log(response));
-        }
+      const api = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
+      const formData = new FormData();
+      formData.append("upload_preset", PRESET_NAME);
+      formData.append("folder", FODER_NAME);
+      for(const file of files){
+        formData.append("file", file);
+        const respon = await axios
+            .post(api, formData, {
+            headers: {
+                 "Content-Type": "multipart/form-data",
+
+             },
+        });
+        url.push(respon.data.secure_url);
+        
+      }
+    
+      return url;
     }
     return `<div>
         <h1>Thêm dự án</h1>
